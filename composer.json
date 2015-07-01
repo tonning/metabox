@@ -1,0 +1,19 @@
+{
+    "name": "tonning/metabox",
+    "description": "Create metaboxes for AdminLTE",
+    "require": {
+        "laravelcollective/html": "^5.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kristoffer Tonning",
+            "email": "tonning.public@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tonning\\Metabox\\": "src/"
+        }
+    }
+}
