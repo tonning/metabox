@@ -12,8 +12,9 @@
         }
     ],
     "autoload": {
-        "psr-4": {
+        "psr-0": {
             "Tonning\\Metabox\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
