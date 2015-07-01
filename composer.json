@@ -1,6 +1,6 @@
 {
     "name": "tonning/metabox",
-    "description": "Create metaboxes for AdminLTE",
+    "description": "Create metaboxes for AdminLTE admin panel",
     "require": {
         "laravelcollective/html": "^5.1"
     },
