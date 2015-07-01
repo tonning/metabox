@@ -1,4 +1,6 @@
-<?php namespace Tonning\Metaboxes;
+<?php 
+
+namespace Tonning\Metabox;
 
 use Illuminate\Support\Facades\Facade;
 

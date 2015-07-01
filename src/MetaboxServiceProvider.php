@@ -1,4 +1,6 @@
-<?php namespace Tonning\Metaboxes;
+<?php 
+
+namespace Tonning\Metabox;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,7 +31,7 @@ class MetaboxServiceProvider extends ServiceProvider {
 			return new MetaboxBuilder($app['html'], $app['url'], $app['session.store']->getToken());
 		});
 
-		$this->app->alias('metabox', 'App\Cratebuddy\Metaboxes\MetaboxBuilder');
+		$this->app->alias('metabox', 'Tonning\Metabox\MetaboxBuilder');
 
 	}
 

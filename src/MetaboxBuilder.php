@@ -1,11 +1,10 @@
 <?php
 
-namespace tonning\Metaboxes;
+namespace Tonning\Metabox;
 
 use App\Media;
 use Collective\Html\FormBuilder;
 use Collective\Html\HtmlBuilder;
-use Illuminate\Contracts\Routing\UrlGenerator;
 
 class MetaboxBuilder extends FormBuilder {
 
