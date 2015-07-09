@@ -6,7 +6,7 @@ First, pull in the package through Composer.
 
 ```js
 "require": {
-    "tonning/media": "~0.1"
+    "tonning/metabox": "~0.1"
 }
 ```
 
