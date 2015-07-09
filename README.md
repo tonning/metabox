@@ -6,7 +6,7 @@ First, pull in the package through Composer.
 
 ```js
 "require": {
-    "tonning/flash": "~0.1"
+    "tonning/media": "~0.1"
 }
 ```
 
@@ -24,4 +24,28 @@ And, for convenience, add a facade alias to this same file at the bottom:
 'aliases' => [
     'Metabox' => Tonning\Metabox\MetaboxFacade::class
 ];
+```
+
+On Eloquent models that uses metaboxes add
+```php
+/**
+ * Serialize the meta data on persist
+ *
+ * @param $meta
+ */
+public function setMetaAttribute($meta)
+{
+    $this->attributes['meta'] = serialize($meta);
+}
+
+/**
+ * Unserialize the meta data on retrival
+ *
+ * @param $meta
+ * @return mixed
+ */
+public function getMetaAttribute($meta)
+{
+    return unserialize($meta);
+}
 ```

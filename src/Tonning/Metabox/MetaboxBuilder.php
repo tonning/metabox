@@ -101,7 +101,7 @@ class MetaboxBuilder extends FormBuilder {
 		$content = '';
 
 		if ($this->getModel())
-			$meta = unserialize($this->model->meta);
+			$meta = $this->model->meta;
 
 		foreach ($fields as $name => $field) {
 			$options = (isset($field['options'])) ? $field['options'] : null;
@@ -252,6 +252,14 @@ class MetaboxBuilder extends FormBuilder {
 
 		return $field;
 	}
+
+	public function link($name, $value, $options = array())
+    {
+        return '<div class="input-group col-xs-12">' .
+            $this->text('link', $value, $options) .
+            '<span class="input-group-addon"><i class="fa fa-external-link"></i></span>' .
+            '</div>';
+    }
 
 	/**
 	 * @return mixed
