@@ -2,7 +2,7 @@
 
 namespace Tonning\Metabox;
 
-use App\Media;
+use Tonning\Media\Media;
 use Collective\Html\FormBuilder;
 use Collective\Html\HtmlBuilder;
 
