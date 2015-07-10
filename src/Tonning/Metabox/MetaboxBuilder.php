@@ -109,7 +109,7 @@ class MetaboxBuilder extends FormBuilder {
 			if ($field['type'] != 'heading') {
 
 				$label = (isset($field['label'])) ? $field['label'] : null;
-				$value = (isset($meta[$name])) ? $meta[$name] : '';
+				$value = (isset($meta[$name])) ? $meta[$name] : $this->model->$name;
 
 				$content .= '<div class="form-group">';
 					if ($label)
