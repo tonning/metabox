@@ -10,7 +10,7 @@ class MetaboxBuilder extends FormBuilder {
 
 	public $model;
 
-	public function model($model)
+	public function withModel($model)
 	{
 		$this->setModel($model);
 	}
