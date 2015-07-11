@@ -118,14 +118,31 @@ class MetaboxBuilder extends FormBuilder {
 				// If a column exists then set value to it's content or use previous value
 				$value = (isset($this->model->$name)) ? $this->model->$name : $value;
 
+				if (isset($field['addon'])) {
+					$attr = isset($field['addon']['attr']) ? $field['addon']['attr'] : null;
+					$content .= '<div class="form-group input-group" ' . $attr . '>';
+
+					if ($field['addon']['position'] == 'before') {
+						$content .= '<span class="input-group-addon">' . $field['addon']['content'] . '</span>';
+					}
+				}
+
 				$content .= '<div class="form-group">';
 
 					if ($label) {
 						$content .= $this->make('heading', $label, null, array());
 					}
 
-				$content .= $this->make($field['type'], $name, $value, $options);
+					$content .= $this->make($field['type'], $name, $value, $options);
 				$content .= '</div>';
+
+				if (isset($field['addon'])) {
+					if ($field['addon']['position'] == 'after') {
+						$content .= '<span class="input-group-addon">' . $field['addon']['content'] . '</span>';
+					}
+
+					$content .= '</div><!-- /.input-group -->';
+				}
 
 			// Type: Heading
 			} else {
@@ -162,7 +179,9 @@ class MetaboxBuilder extends FormBuilder {
 			case 'select':
 				$list = array_pull($options, 'list');
 
-				return $this->select($name, $list, null, $options);
+				$selected = array_pull($options, 'selected');
+
+				return $this->select($name, $list, $selected, $options);
 
 			default:
 				return $this->$type($name, $value, $options);
