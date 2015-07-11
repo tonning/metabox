@@ -100,16 +100,22 @@ class MetaboxBuilder extends FormBuilder {
 	{
 		$content = '';
 
-		if ($this->getModel())
+		if ($this->getModel()) {
 			$meta = $this->model->meta;
+		}
 
 		foreach ($fields as $name => $field) {
+			$value = '';
 			$options = (isset($field['options'])) ? $field['options'] : null;
 
 			if ($field['type'] != 'heading') {
 
 				$label = (isset($field['label'])) ? $field['label'] : null;
-				$value = (isset($meta[$name])) ? $meta[$name] : $this->model->$name;
+
+				// If a meta value is set then use that or nothing
+				$value = (isset($meta[$name])) ? $meta[$name] : '';
+				// If a column exists then set value to it's content or use previous value
+				$value = (isset($this->model->$name)) ? $this->model->$name : $value;
 
 				$content .= '<div class="form-group">';
 					if ($label)
