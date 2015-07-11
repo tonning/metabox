@@ -148,13 +148,21 @@ class MetaboxBuilder extends FormBuilder {
 	 */
 	private function make($type, $name, $value, $options = array())
 	{
-		if ($type == 'radio') {
-			$selected = (isset($options['selected']) ? $options['selected'] : false);
+		switch ($type) {
+			case 'radio':
+				$selected = (isset($options['selected']) ? $options['selected'] : false);
 
-			return $this->$type($name, $value, $selected, $options);
+				return $this->$type($name, $value, $selected, $options);
+
+			case 'checkbox':
+				$checked = (isset($options['checked']) ? $options['checked'] : false);
+
+				return $this->$type($name, 1, $checked, $options);
+
+			default:
+				return $this->$type($name, $value, $options);
+
 		}
-		
-		return $this->$type($name, $value, $options);
 	}
 
 
