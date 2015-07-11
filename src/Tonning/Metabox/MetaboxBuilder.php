@@ -109,6 +109,7 @@ class MetaboxBuilder extends FormBuilder {
 			$options = (isset($field['options'])) ? $field['options'] : null;
 
 			if ($field['type'] != 'heading') {
+				$name = (isset($field['name']) ? $field['name'] : $name);
 
 				$label = (isset($field['label'])) ? $field['label'] : null;
 
@@ -118,9 +119,12 @@ class MetaboxBuilder extends FormBuilder {
 				$value = (isset($this->model->$name)) ? $this->model->$name : $value;
 
 				$content .= '<div class="form-group">';
-					if ($label)
+
+					if ($label) {
 						$content .= $this->make('heading', $label, null, array());
-					$content .= $this->make($field['type'], $name, $value, $options);
+					}
+
+				$content .= $this->make($field['type'], $name, $value, $options);
 				$content .= '</div>';
 
 			// Type: Heading
