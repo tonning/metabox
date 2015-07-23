@@ -174,7 +174,7 @@ class MetaboxBuilder extends FormBuilder {
 			case 'checkbox':
 				$checked = (isset($options['checked']) ? $options['checked'] : $value);
 
-				return $this->checkbox($name, 1, $checked, $options);
+				return $this->checkbox($name, $value, $checked, $options);
 
 			case 'select':
 				$list = array_pull($options, 'list');
