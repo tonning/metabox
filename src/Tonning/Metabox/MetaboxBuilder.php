@@ -105,7 +105,7 @@ class MetaboxBuilder extends FormBuilder {
 		}
 
 		foreach ($fields as $name => $field) {
-			$value = '';
+			$value = (isset($field['value'])) ? $field['value'] : '';
 			$options = (isset($field['options'])) ? $field['options'] : null;
 
 			if ($field['type'] != 'heading') {
@@ -113,8 +113,8 @@ class MetaboxBuilder extends FormBuilder {
 
 				$label = (isset($field['label'])) ? $field['label'] : null;
 
-				// If a meta value is set then use that or nothing
-				$value = (isset($meta[$name])) ? $meta[$name] : '';
+				// If a meta value is set then use that or previous value
+				$value = (isset($meta[$name])) ? $meta[$name] : $value;
 				// If a column exists then set value to it's content or use previous value
 				$value = (isset($this->model->$name)) ? $this->model->$name : $value;
 
